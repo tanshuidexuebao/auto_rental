@@ -1,0 +1,52 @@
+server:
+  port: 8081
+
+spring:
+  profiles:
+    active: dev
+
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/auto_rental?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: xwc123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jackson:
+    date-format: yyyy-MM-dd
+    time-zone: Asia/Shanghai
+
+  mvc:
+    format:
+      date: yyyy-MM-dd
+      date-time: yyyy-MM-dd HH:mm:ss
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      database: 0
+      timeout: 10000
+      expire: 60000
+
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+  mapper-locations: classpath*:mapper/**/*.xml
+
+  type-aliases-package: com.coder.entity
+
+  global-config:
+    db-config:
+      logic-delete-field: deleted
+
+encoder:
+  ctype:
+    strength: 10
+    secret: abc123456
+
+request:
+  login-url: /rental/user/login
